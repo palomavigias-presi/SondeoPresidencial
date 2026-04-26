@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --grid-size: 32px;
+}
+
+html,
+body {
+  background: #f8fafc;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  /* Anti-overflow horizontal: cualquier elemento que se exceda en mobile
+     queda recortado en lugar de causar scroll lateral. */
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-2xl px-4 sm:px-6;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .pretty {
+    text-wrap: pretty;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-deep focus-visible:ring-offset-2;
+  }
+
+  /* Patrón grid sutil para fondos "tech" */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(13, 27, 75, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(13, 27, 75, 0.06) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+  }
+  .bg-grid-dark {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 205, 0, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 205, 0, 0.06) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+  }
+
+  /* Banda de la bandera Colombia (decoración top/bottom) */
+  .flag-stripe {
+    background: linear-gradient(
+      90deg,
+      #ffcd00 0%,
+      #ffcd00 50%,
+      #003893 50%,
+      #003893 75%,
+      #ce1126 75%,
+      #ce1126 100%
+    );
+  }
+
+  /* Texto con gradiente estilo "tech" */
+  .text-gradient-flag {
+    background-image: linear-gradient(
+      90deg,
+      #003893 0%,
+      #0d1b4b 30%,
+      #d4a017 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Tarjeta con borde sutil tipo "tech panel" */
+  .panel {
+    @apply relative rounded-2xl border border-slate-200 bg-white shadow-glow;
+  }
+  .panel-dark {
+    @apply relative rounded-2xl border border-white/10 bg-brand-ink text-white shadow-glow;
+  }
+
+  /* Números y labels monoespaciados estilo HUD */
+  .mono-stat {
+    font-variant-numeric: tabular-nums;
+    @apply font-mono;
+  }
+}
